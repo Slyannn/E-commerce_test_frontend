@@ -1,4 +1,4 @@
-# E-Commerce Demo - Axionnable Test Technique
+# E-Commerce Demo - Axionable Test Technique
 
 Une application e-commerce complète développée avec React et Material-UI, incluant la gestion des produits, du panier et de l'authentification.
 

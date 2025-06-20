@@ -65,10 +65,10 @@ const LandingPage = () => {
       {/* Header */}
       <Box textAlign="center" mb={6}>
         <Typography variant="h2" component="h1" gutterBottom color="primary">
-          Axionnable Test Technique
+          Axionable Test Technique
         </Typography>
         <Typography variant="h5" color="text.secondary" paragraph>
-          Application E-Commerce Complète
+          Application E-Commerce 
         </Typography>
         <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
           Démonstration d'une application e-commerce moderne développée avec React et Material-UI, 
