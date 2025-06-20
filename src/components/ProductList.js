@@ -14,12 +14,14 @@ import {
 import { AddShoppingCart } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { productService } from '../services/api';
+import { useApp } from '../context/AppContext';
 
 const ProductList = ({ onAddToCart }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const { user } = useApp();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -40,6 +42,10 @@ const ProductList = ({ onAddToCart }) => {
   }, []);
 
   const handleAddToCart = (product) => {
+    if (!user) {
+      navigate('/login');
+      return;
+    }
     if (onAddToCart) {
       onAddToCart(product);
     }

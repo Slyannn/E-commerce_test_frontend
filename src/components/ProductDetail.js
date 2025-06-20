@@ -21,6 +21,7 @@ import {
 } from '@mui/icons-material';
 import { useParams, useNavigate } from 'react-router-dom';
 import { productService } from '../services/api';
+import { useApp } from '../context/AppContext';
 
 const ProductDetail = ({ onAddToCart }) => {
   const { id } = useParams();
@@ -29,6 +30,7 @@ const ProductDetail = ({ onAddToCart }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [quantity, setQuantity] = useState(1);
+  const { user } = useApp();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -49,6 +51,10 @@ const ProductDetail = ({ onAddToCart }) => {
   }, [id]);
 
   const handleAddToCart = () => {
+    if (!user) {
+      navigate('/login');
+      return;
+    }
     if (onAddToCart && product) {
       onAddToCart({ ...product, quantity });
     }
@@ -116,7 +122,7 @@ const ProductDetail = ({ onAddToCart }) => {
     <Container maxWidth="lg" sx={{ py: 4 }}>
       <Button
         startIcon={<ArrowBack />}
-        onClick={() => navigate('/products')}
+        onClick={() => navigate('/')}
         sx={{ mb: 3 }}
       >
         Retour aux produits
